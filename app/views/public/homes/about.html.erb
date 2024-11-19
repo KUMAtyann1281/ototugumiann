@@ -1,2 +1,72 @@
-<h1>Public::Homes#about</h1>
-<p>Find me in app/views/public/homes/about.html.erb</p>
+<div class="container">
+  <div class='form-group row'>
+    <div class='col-12 double_line'>
+      <h2 class='text-center'>
+        オトツグミ庵とは？
+      </h2>
+      <p class='text-center bottom-space'>
+        感想を投稿したり、本を探してみたり、本についての語り合いをしてみたり・・・<br>
+        オトツグミ庵は、日本中にいる読書家たちと語り合いができるコミュニティサイトです。<br>
+        会員でない方も投稿やグループの閲覧はできますが、<br>
+        感想の投稿やコメント、グループに入ってチャットをするにはユーザー登録が必要になります。
+      </p>
+      <h4 class='text-center border-top'>
+        登録・ログインはこちら
+      </h4>
+      <div class='text-center'>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success w-75" %>
+      </div>
+      <div class='text-center bottom-space'>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary w-75" %>
+      </div>
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-4 offset-4 text-title'>
+      <h3 class='text-center'>
+        オトツグミ庵の主な機能
+      </h3>
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-10 offset-1'>
+      <h4 class='text-center border-bottom'>
+        感想の投稿
+      </h4>
+      <p class='text-center'>
+        読んだ本の感想を投稿することができます。<br>
+        また、他の人の感想を見ることができるのでより深く理解できたりします。<br>
+        気になることや共感することがあれば、コメントやいいねをすることもできます。<br>
+        <br>
+        読んだことのない本を探す際にも活用ができます。
+      </p>
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-10 offset-1'>
+      <h4 class='text-center border-bottom'>
+        読書家たちとの話し合い
+      </h4>
+      <p class='text-center'>
+        グループでは、好きなジャンルが同じ人と話し合ったりすることができます。<br>
+        例えば本の内容を考察しあったり、好きなジャンルの本をおすすめしあったりできます。<br>
+        <br>
+        趣味が同じユーザーがいれば、合う本を新しく見つけることができるかもしれません。
+      </p>
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-10 offset-1'>
+      <h4 class='text-center border-bottom'>
+        検索による探しもの
+      </h4>
+      <p class='text-center bottom-space'>
+        特定のページでは探し物が見つけやすいように検索できるようにしています。<br>
+        本のジャンルやタグ、一部の名前で見つけられるようになっています。<br>
+        <br>
+        気になる本の感想やグループの名前、ジャンル・タグで検索できるので、<br>
+        是非ご活用ください。
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,81 +1,87 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <h1><%= link_to image_tag("titlelogo.png", alt: "Title Logo", size: "300x100"), "/" %></h1>
 
-  <ul class="navbar-nav ml-auto">
-    <% if customer_signed_in? %>
-      <!--ユーザーがログインしている時 -->
-      <li>
-        <%= link_to "アバウト", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "マイページ", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-togglee navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          投稿関連
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">新規投稿の作成</a>
-          <a class="dropdown-item" href="#">投稿一覧</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-togglee navbarDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          グループ関連
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">新規グループの作成</a>
-          <a class="dropdown-item" href="#">グループ一覧</a>
-        </div>
-      </li>
-      <li>
-        <%= link_to "ログアウト", "#", method: :delete, class: "btn btn-outline-dark" %></li>
-      </li>
-      <li>
-        <%= link_to "ログアウト", "#", method: :delete, class: "btn btn-outline-dark" %></li>
-      </li>
+  <div class="right">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <!--ユーザーがログインしている時 -->
+        <li class="nav-item">
+          <a class="nav-link white" aria-current="page" href="about_path">アバウト</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link white" href="#">マイページ</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link white dropdown-togglee navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            投稿関連
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">新規投稿の作成</a>
+            <a class="dropdown-item" href="#">投稿一覧</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link white dropdown-togglee navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            グループ関連
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">新規グループの作成</a>
+            <a class="dropdown-item" href="#">グループ一覧</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", "#", method: :delete, class: "nav-link white" %>
 
-    <% elsif admin_signed_in? %>
-      <!-- 管理者がログインしている時 -->
-      <li>
-        <%= link_to "お知らせ一覧", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "会員一覧", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "投稿一覧" , "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "グループ一覧", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "タグ・ジャンル一覧", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", "#", method: :delete, class: "btn btn-outline-dark" %>
-      </li>
+        </li>
+        <li class="nav-item">
+          <%= link_to "お知らせ一覧", "#_path", class: "nav-link" %>
+        </li>
 
-    <% elsif !admin_signed_in? %>
-      <!-- 管理者がログインしていない時の表示 -->
-      <li>
-        <%= link_to "ログイン", "#", class: "btn btn-outline-dark" %>
-      </li>
+      <% elsif admin_signed_in? %>
+        <!-- 管理者がログインしている時 -->
+        <li class="nav-item">
+          <%= link_to "お知らせ一覧", "#_path", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "会員一覧", "#_path", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "投稿一覧" , "#_path", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "グループ一覧", "#_path", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "タグ・ジャンル一覧", "#_path", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link white" %>
+        </li>
 
-    <% else %>
-      <!-- ユーザーがログインしていない時 -->
-      <li>
-        <%= link_to "アバウト", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "投稿一覧", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "新規登録", "#", class: "btn btn-outline-dark" %>
-      </li>
-      <li>
-        <%= link_to "ログイン", "#", class: "btn btn-outline-dark" %>
-      </li>
-    <% end %>
-  </ul>
+      <% elsif controller_name == "admin" && !admin_signed_in? %>
+        <!-- 管理者がログインしていない時の表示 -->
+        <li class="nav-item">
+          <%= link_to "ログイン", new_admin_session_path, class: "nav-link white" %>
+        </li>
+
+      <% else %>
+        <!-- ユーザーがログインしていない時 -->
+        <li class="nav-item">
+          <%= link_to "アバウト", about_path, class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "投稿一覧", "#", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "グループ一覧", "#", class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新規登録", new_user_registration_path, class: "nav-link white" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_user_session_path, class: "nav-link white" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </nav>

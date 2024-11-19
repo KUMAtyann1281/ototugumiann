@@ -1,3 +1,37 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.double_line {
+  display: inline-block;
+  position: relative;
+  padding: 18px;
+  border: solid 4px #00a3af;
+  font-size: 0.8em;
+}
+ 
+.double_line::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: -14px;
+  right: -14px;
+  left: 6px;
+  border: solid 4px #83ccd2;
+  z-index: -1;
+}
+
+.text-title {
+  color: white;
+  border-radius: 10px;
+  background-color: #00a3af;
+  padding-bottom:5px;
+  margin-top: 20px;
+}
+
+.bottom-space {
+  margin-bottom: 40px;
+}
+
+.border-top {
+  padding-top: 25px;
+}

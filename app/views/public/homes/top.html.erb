@@ -1,2 +1,53 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container">
+  <div class='form-group row'>
+    <div class='col-12 double_line'>
+      <h2 class='text-center'>
+        まだ見ぬ本に出会おう
+      </h2>
+      <p class='text-center bottom-space'>
+        ようこそ、オトツグミ庵へ！<br>
+        オトツグミ庵は、日本中にいる読書家たちと語り合いができるコミュニティサイトです。<br>
+        会員でない方も投稿やグループの閲覧はできますが、<br>
+        感想の投稿やコメント、グループに入ってチャットをするにはユーザー登録が必要になります。
+      </p>
+      <h4 class='text-center border-top'>
+        登録・ログインはこちら
+      </h4>
+      <div class='text-center'>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success w-75" %>
+      </div>
+      <div class='text-center bottom-space'>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary w-75" %>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class='form-group row'>
+    <div class='col-8 offset-2'>
+      
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-12'>
+      <h4 class='text-center border-bottom'>
+        お知らせ
+      </h4>
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-8'>
+      <h4 class='text-center border-bottom'>
+        投稿一覧
+      </h4>
+      <h4 class='text-center border-bottom'>
+        グループ一覧
+      </h4>
+    </div>
+    <div class='col-4'>
+      <h4 class='text-center border-bottom'>
+        タグ・ジャンル一覧
+      </h4>
+    </div>
+  </div>
+</div>
