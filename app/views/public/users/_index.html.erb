@@ -1,0 +1,25 @@
+<div class="form-group row border-bottom">
+  <div class="col-2 offset-1">
+    <h5 class="text-center">ニックネーム</h5>
+  </div>
+  <div class="col-8">
+    <h5 class="text-center">紹介文</h5>
+  </div>
+</div>
+
+<div class="form-group row border-bottom">
+  <% user.each do |user| %>
+    <div class="col-1 bottom-space2">
+      <%= image_tag user.get_profile_image, size: '70x70' %>
+    </div>
+    <div class="col-2 text-center">
+      <p><%= user.name %></p>
+    </div>
+    <div class="col-8">
+      <p><%= user.information %></p>
+    </div>
+    <div class="col-1 text-center">
+      <%= link_to '詳細', user_path(user.id), class: "btn btn-info", data: {"turbolinks" => false} %>
+    </div>
+  <% end %>
+</div>

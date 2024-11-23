@@ -1,0 +1,24 @@
+<% if posts.present? %>
+  <div class="form-group row border-bottom">
+    <% posts.each do |post| %>
+      <div class="col-1 bottom-space2">
+        <%= link_to user_path(post.user) do %>
+          <%= image_tag user.get_profile_image, size: '70x70' %>
+        <% end %>
+      </div>
+      <div class="col-10">
+        <h5><%= link_to post.title, post, class: "post_#{post.id}" %></h5>
+        <p><%= book.body %></p>
+      </div>
+      <div class="col-1 text-center">
+        <%= link_to '詳細', post_path(post.id), class: "btn btn-info", data: {"turbolinks" => false} %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="form-group row">
+    <div class="col-12">
+      <p class="text-center">投稿されていません。</p>
+    </div>
+  </div>
+<% end %>
