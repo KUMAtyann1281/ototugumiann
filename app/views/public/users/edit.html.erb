@@ -1,11 +1,11 @@
 <div class='container'>
   <div class='form-group row'>
     <div class="col-12">
-      <h2>User info</h2>
+      <h3 class="text-center">ユーザー情報の編集</h3>
       <%= form_with model: @user, local: true do |f| %>
         <%= render 'layouts/errors', obj: @user %>
         <div class="form-group">
-          <%= f.label :image %>
+          <h5>プロフィール画像</h5>
           <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
         </div>
         <div class="form-group">
@@ -16,8 +16,8 @@
           <h5>自己紹介文</h5>
           <%= f.text_area :information, class: "form-control information" %>
         </div>
-        <div class="form-group">
-          <%= f.submit class: 'btn btn-success' %>
+        <div class="form-group text-center">
+          <%= f.submit class: 'btn btn-success w-25' %>
         </div>
       <% end %>
     </div>
