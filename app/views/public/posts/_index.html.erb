@@ -1,20 +1,22 @@
-<% if posts.present? %>
-  <div class="form-group row border-bottom">
-    <% posts.each do |post| %>
+<% if post.present? %>
+  <% post.each do |post| %>
+    <div class="form-group row border-bottom">
       <div class="col-1 bottom-space2">
         <%= link_to user_path(post.user) do %>
-          <%= image_tag user.get_profile_image, size: '70x70' %>
+          <%= image_tag post.user.get_profile_image, size: '70x70' %>
+          <%= post.user.name %>
         <% end %>
       </div>
       <div class="col-10">
-        <h5><%= link_to post.title, post, class: "post_#{post.id}" %></h5>
-        <p><%= book.body %></p>
+          <h5><%= link_to post.title, post, class: "post_#{post.id}" %></h5>
+          <p><%= post.body %></p>
       </div>
-      <div class="col-1 text-center">
-        <%= link_to '詳細', post_path(post.id), class: "btn btn-info", data: {"turbolinks" => false} %>
+      <div class="col-1">
+        <p>いいね</p>
+        <p>コメント数</p>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 <% else %>
   <div class="form-group row">
     <div class="col-12">

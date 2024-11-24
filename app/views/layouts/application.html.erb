@@ -17,6 +17,11 @@
     <header>
       <%= render "layouts/header" %>
     </header>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>">
+        <%= message %>
+      </div>
+    <% end %>
     <%= yield %>
     <footer>
       <%= render "layouts/footer" %>
