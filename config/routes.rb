@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'searches/search'
   # ユーザー用
   # URL /users/sign_in ...
   devise_for :users, skip: [:passwords], controllers: {
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about", to:"homes#about"
+    get "/search", to: "searchs#search"
     resources :notices, only: [:index,:show]
     resources :users, only: [:index,:show,:edit,:update,:destroy,:unsubscribe] do
       patch 'withdraw', on: :member

@@ -1,0 +1,40 @@
+<% if @model == 'user' %>
+  <div class='container'>
+    <div class="form-group row">
+      <div class="col-12">
+        <h3 class="text-center">【ユーザー検索結果】検索ワード：<%= @content %></h3>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <%= render 'public/users/index', user: @records %>
+      </div>
+    </div>
+  </div>
+<% elsif @model == 'posts' %>
+  <div class='container'>
+    <div class="form-group row">
+      <div class="col-12">
+        <h3 class="text-center">【投稿検索結果】検索ワード：<%= @content %></h3>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <%= render 'public/posts/index', post: @records %>
+      </div>
+    </div>
+  </div>
+<% else @model == 'groups' %>
+  <div class='container'>
+    <div class="form-group row">
+      <div class="col-12">
+        <h3 class="text-center">【グループ検索結果】検索ワード：<%= @content %></h3>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <%= render 'public/groups/index', group: @records %>
+      </div>
+    </div>
+  </div>
+<% end %>
