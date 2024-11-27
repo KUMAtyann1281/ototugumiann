@@ -12,6 +12,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @comment = Comment.new
   end
 
   def edit
@@ -50,6 +51,10 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:comment)
   end
 
   def save_tag(sent_tags)
