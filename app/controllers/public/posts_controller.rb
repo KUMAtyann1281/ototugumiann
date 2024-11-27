@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :show, :edit]
 
   def new
     @post = Post.new
@@ -77,6 +78,12 @@ class Public::PostsController < ApplicationController
     @user = @post.user
     unless @user.id == current_user.id
       redirect_to posts_path
+    end
+  end
+
+  def authenticate_user!
+    unless user_signed_in?
+      redirect_to new_user_session_path
     end
   end
 end
