@@ -15,10 +15,14 @@ class User < ApplicationRecord
     length: { minimum: 2, maximum: 10 },
     uniqueness: true
 
-  validates :introduction,
+  validates :information,
     length: { maximum: 50 }
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'
+  end
+
+  def active_for_authentication?
+    super && (is_deleted == false)
   end
 end

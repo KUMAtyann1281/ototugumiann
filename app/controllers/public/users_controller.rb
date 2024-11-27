@@ -17,7 +17,17 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
   def update
+    @user = current_user
     if @user.update(user_params)
       redirect_to user_path(current_user), notice: "You have updated user successfully."
     else

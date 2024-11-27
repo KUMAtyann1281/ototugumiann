@@ -22,12 +22,12 @@
   </div>
   <div class="form-group row">
     <div class="col-3 offset-3 text-center">
-      <% if @user.id == current_user.id %>
+      <% if @user == current_user %>
         <%= link_to "編集", edit_post_path(@post), class: 'btn btn-success w-75' %>
       <% end %>
     </div>
     <div class="col-3 text-center">
-      <% if @user.id == current_user.id %>
+      <% if @user == current_user %>
         <%= link_to "削除", post_path(@post.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger w-75" %>
       <% end %>
     </div>
@@ -38,13 +38,13 @@
     </div>
   </div>
   <div class='form-group row'>
-    
-      <%= render "public/comments/index", post: @post %>
-
+    <%= render "public/comments/index", post: @post %>
   </div>
   <div class='form-group row'>
     <div class="col-12">
-      <%= render "public/comments/form", post: @post, comment: @comment %>
+      <% if user_signed_in? %>
+        <%= render "public/comments/form", post: @post, comment: @comment %>
+      <% end %>
     </div>
   </div>
 </div>

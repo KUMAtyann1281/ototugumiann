@@ -1,7 +1,7 @@
 
 <% post.comments.each do |comment| %>
   <div class="col-1">
-    <%= link_to user_path(comment) do %>
+    <%= link_to user_path(comment.user) do %>
       <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
       <%= comment.user.name %>
     <% end %>

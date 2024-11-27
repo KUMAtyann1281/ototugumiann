@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     get "about", to:"homes#about"
     get "/search", to: "searchs#search"
     resources :notices, only: [:index,:show]
-    resources :users, only: [:index,:show,:edit,:update,:destroy,:unsubscribe] do
+    resources :users, only: [:index,:show,:edit,:update,:destroy] do
+      get "unsubscribe", on: :member
       patch 'withdraw', on: :member
       resource :favorites, only: [:create, :destroy]
       resource :relationships, only: [:create, :destroy]
