@@ -1,20 +1,17 @@
-<table>
-  <tbody>
-    <% post.comments.each do |comment| %>
-    <tr>
-      <td>
-        <%= link_to user_path(comment) do %>
-          <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
-          <%= comment.user.name %>
-        <% end %>
-      </td>
-      <td><%= comment.comment %></td>
-      <td>
-        <% if comment.user == current_user %>
-          <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-danger", remote: true, data: {"turbolinks" => false} %>
-        <% end %>
-      </td>
-    </tr>
+
+<% post.comments.each do |comment| %>
+  <div class="col-1">
+    <%= link_to user_path(comment) do %>
+      <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
+      <%= comment.user.name %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="col-10">
+    <%= comment.comment %>
+  </div>
+  <div class="col-1">
+    <% if comment.user == current_user %>
+      <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-danger", remote: true, data: {"turbolinks" => false} %>
+    <% end %>
+  </div>
+<% end %>
