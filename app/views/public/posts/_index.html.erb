@@ -7,13 +7,16 @@
           <%= post.user.name %>
         <% end %>
       </div>
-      <div class="col-9">
-          <h5><%= link_to post.title, post, class: "post_#{post.id}" %></h5>
+      <div class="col-8">
+          <h5><%= post.title %></h5>
           <p class="line-break"><%= post.body %></p>
       </div>
       <div class="col-2">
         <p>いいね</p>
         <p>コメント数： <%= post.comments.count %></p>
+      </div>
+      <div class="col-1">
+        <%= link_to "詳細", post_path(post.id), class: 'btn btn-success' %>
       </div>
     </div>
   <% end %>

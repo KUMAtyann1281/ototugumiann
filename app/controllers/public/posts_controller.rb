@@ -27,7 +27,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "本の感想を投稿しました。"
       redirect_to post_path(@post.id)
     else
-      flash.discard[:notice] = "空欄の入力をしてください。"
+      flash.discard[:notice] = "タイトルまたは感想が空欄になっていますので入力をしてください。"
       render :new
     end
   end
@@ -35,8 +35,9 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: "感想を修正しました。"
+      redirect_to post_path(@post.id), notice: "投稿を修正しました。"
     else
+      flash.discard[:notice] = "タイトルまたは感想が空欄になっていますので入力をしてください。"
       render "edit"
     end
   end
@@ -44,7 +45,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_path(@post.user.id)
   end
 
   private

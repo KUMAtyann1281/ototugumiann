@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_path(current_user), notice: "You have updated user successfully."
+      redirect_to user_path(current_user), notice: "ユーザー情報を更新しました"
     else
       render :edit
     end
@@ -39,6 +39,10 @@ class Public::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :information, :profile_image)
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :body, :content)
   end
 
   def ensure_correct_user
