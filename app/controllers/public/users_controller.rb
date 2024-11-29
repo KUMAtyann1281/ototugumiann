@@ -1,6 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :authenticate_user!, only: [:edit]
 
   def index
     @users = User.all
@@ -43,14 +42,12 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_correct_user
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to user_path(current_user)
-    end
-  end
-
-  def authenticate_user!
-    unless user_signed_in?
+    if user_signed_in?
+      @user = User.find(params[:id])
+      unless @user == current_user
+        redirect_to user_path(current_user)
+      end
+    else
       redirect_to new_user_session_path
     end
   end

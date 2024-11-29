@@ -7,8 +7,8 @@
   </div>
 </div>
 
-<div class="form-group row border-bottom">
-  <% user.each do |user| %>
+<% user.each do |user| %>
+  <div class="form-group row border-bottom">
     <div class="col-1 bottom-space2">
       <%= image_tag user.get_profile_image, size: '70x70' %>
     </div>
@@ -21,5 +21,5 @@
     <div class="col-1 text-center">
       <%= link_to '詳細', user_path(user.id), class: "btn btn-info", data: {"turbolinks" => false} %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

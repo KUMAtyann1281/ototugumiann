@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :authenticate_user!, only: [:new, :show, :edit]
+  before_action :authenticate_user!, only: [:new, :show]
 
   def new
     @post = Post.new
@@ -73,10 +73,14 @@ class Public::PostsController < ApplicationController
   end
 
   def ensure_correct_user
-    @post = Post.find(params[:id])
-    @user = @post.user
-    unless @user.id == current_user.id
-      redirect_to posts_path
+    if user_signed_in?
+      @post = Post.find(params[:id])
+      @user = @post.user
+      unless @user.id == current_user.id
+        redirect_to posts_path
+      end
+    else
+      redirect_to new_user_session_path
     end
   end
 

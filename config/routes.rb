@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about", to:"homes#about"
-    get "/search", to: "searchs#search"
+    get "search", to: "searchs#search"
     resources :notices, only: [:index,:show]
     resources :users, only: [:index,:show,:edit,:update,:destroy] do
       get "unsubscribe", on: :member
@@ -35,7 +35,8 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
-    get "/" => "homes/top"
+    get "/" => "homes#top"
+    get "search", to: "searchs#search"
     resources :notices, only: [:new, :index, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
