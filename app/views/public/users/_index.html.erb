@@ -1,6 +1,6 @@
 <div class="form-group row border-bottom">
   <div class="col-3 offset-1">
-    <h5 class="text-center">ニックネーム</h5>
+    <h5 class="text-center">ハンドルネーム</h5>
   </div>
   <div class="col-7">
     <h5 class="text-center">紹介文</h5>
@@ -16,7 +16,7 @@
       <p><%= user.name %></p>
     </div>
     <div class="col-7">
-      <p><%= user.information %></p>
+      <p class="line-break"><%= user.information %></p>
     </div>
     <div class="col-1 text-center">
       <%= link_to '詳細', user_path(user.id), class: "btn btn-info", data: {"turbolinks" => false} %>

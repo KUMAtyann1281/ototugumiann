@@ -24,19 +24,18 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "You have created post successfully."
+      flash[:notice] = "本の感想を投稿しました。"
       redirect_to post_path(@post.id)
     else
-      flash.discard(:notice)
-      @posts = Post.all
-      render :index
+      flash.discard[:notice] = "空欄の入力をしてください。"
+      render :new
     end
   end
 
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path(@post.id), notice: "You have updated post successfully."
+      redirect_to post_path(@post.id), notice: "感想を修正しました。"
     else
       render "edit"
     end
@@ -44,14 +43,14 @@ class Public::PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @post. destroy
+    @post.destroy
     redirect_to posts_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :content)
   end
 
   def comment_params

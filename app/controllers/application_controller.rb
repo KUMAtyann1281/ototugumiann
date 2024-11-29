@@ -6,18 +6,18 @@ class ApplicationController < ActionController::Base
       when Admin
         admin_homes_top_path
       when User
-        root_path
+        user_path(current_user)
     end
   end
 
-  # def after_sign_out_path_for(resource)
-  #   case resource
-  #     when Admin
-  #       new_admin_session_path
-  #     when User
-  #       root_path
-  #   end
-  # end
+  def after_sign_out_path_for(resource)
+    case resource
+      when Admin
+        new_admin_session_path
+      else User
+        about_path
+    end
+  end
 
   protected
 

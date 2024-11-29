@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'searches/search'
   # ユーザー用
   # URL /users/sign_in ...
   devise_for :users, skip: [:passwords], controllers: {
