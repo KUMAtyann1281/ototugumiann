@@ -1,2 +1,26 @@
-<h1>Admin::Notices#show</h1>
-<p>Find me in app/views/admin/notices/show.html.erb</p>
+<div class='container'>
+  <div class="form-group row">
+    <div class="col-12">
+      <h3 class="text-center">お知らせの詳細</h3>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-12">
+      <%= @notice.created_at %><rb>
+      <h5 class="text-center"><%= @notice.title %></h5>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-12">
+      <p class="line-break"><%= @notice.body %></p>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-3 offset-3 text-center">
+      <%= link_to "編集", edit_admin_notice_path(@notice.id), class: 'btn btn-success w-75' %>
+    </div>
+    <div class="col-3 text-center">
+      <%= link_to "削除", admin_notices_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger w-75" %>
+    </div>
+  </div>
+</div>

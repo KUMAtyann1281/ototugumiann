@@ -1,2 +1,44 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
+  <div class='form-group row'>
+    <div class='col-12 double_line bottom-space'>
+      <p class='text-center bottom-space2'>
+        こちらはオトツグミ庵の管理者専用ページです。<br>
+        管理者のログインは下記のボタンでのみ行えます。<br>
+        なお、ログイン後はユーザー・投稿・グループなどの検閲やサイト内のお知らせを出すのは、<br>
+        下記のボタンかヘッダーのボタンから行って下さい。
+      </p>
+    </div>
+  </div>
+  <div class='form-group row'>
+    <div class='col-12'>
+      <% if admin_signed_in? %>
+        <!-- 管理者がログインしている時 -->
+        <div class='text-center'>
+          <%= link_to "お知らせ一覧へ", admin_notices_path, class: "btn btn-info w-50" %>
+        </div>
+        <div class='text-center'>
+          <%= link_to "ユーザー一覧へ", admin_users_path, class: "btn btn-info w-50" %>
+        </div>
+        <div class='text-center'>
+          <%= link_to "投稿一覧へ" , admin_posts_path, class: "btn btn-info w-50" %>
+        </div>
+        <div class='text-center'>
+          <%= link_to "グループ一覧へ", admin_groups_path, class: "btn btn-info w-50" %>
+        </div>
+        <div class='text-center'>
+          <%= link_to "タグ・ジャンル一覧へ", "admin_#_path", class: "btn btn-info w-50" %>
+        </div>
+
+      <% else %>
+        <!-- 管理者がログインしていない時 -->
+        <h4 class='text-center'>
+          管理者のログインはこちら
+        </h4>
+        <div class='text-center'>
+        <%= link_to "ログイン", new_admin_session_path, class: "btn btn-info w-50" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</div>

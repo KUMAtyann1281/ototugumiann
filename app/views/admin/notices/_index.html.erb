@@ -1,0 +1,21 @@
+<% if notice.present? %>
+  <% notice.each do |notice| %>
+    <div class="form-group row border-bottom">
+      <div class="col-3 bottom-space2">
+        <%= notice.created_at %>
+      </div>
+      <div class="col-8">
+        <h5><%= notice.title %></h5>
+      </div>
+      <div class="col-1">
+        <%= link_to "詳細", admin_notice_path(notice.id), class: 'btn btn-success' %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="form-group row">
+    <div class="col-12">
+      <p class="text-center">お知らせはありません。</p>
+    </div>
+  </div>
+<% end %>

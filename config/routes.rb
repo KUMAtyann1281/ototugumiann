@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get "about", to:"homes#about"
     get "search", to: "searchs#search"
     resources :notices, only: [:index,:show]
-    resources :users, only: [:index,:show,:edit,:update,:destroy] do
+    resources :users, only: [:index,:show,:edit,:update] do
       get "unsubscribe", on: :member
       patch 'withdraw', on: :member
       resource :favorites, only: [:create, :destroy]
@@ -35,9 +35,9 @@ Rails.application.routes.draw do
   }
   
   namespace :admin do
-    get "/" => "homes#top"
+    root to: "homes#top"
     get "search", to: "searchs#search"
-    resources :notices, only: [:new, :index, :show, :edit, :update, :destroy]
+    resources :notices, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update, :destroy] do
       resources :comments, only: [:destroy]

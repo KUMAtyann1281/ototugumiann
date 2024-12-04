@@ -3,8 +3,8 @@
 
   <div class="right">
     <ul class="navbar-nav">
-      <% if user_signed_in? %>
-        <!--ユーザーがログインしている時 -->
+      <% if user_signed_in? && request.path.exclude?("/admin") %>
+        <!--ユーザーがログインしていて、URLに"/admin"を含まない時 -->
         <li class="nav-item">
           <%= link_to "アバウト", about_path, class: "nav-link white" %>
         </li>
@@ -42,32 +42,32 @@
       <% elsif admin_signed_in? %>
         <!-- 管理者がログインしている時 -->
         <li class="nav-item">
-          <%= link_to "お知らせ一覧", notices_path, class: "nav-link white" %>
+          <%= link_to "お知らせ一覧", admin_notices_path, class: "nav-link white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "ユーザー一覧", users_path, class: "nav-link white" %>
+          <%= link_to "ユーザー一覧",  admin_users_path, class: "nav-link white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "投稿一覧" , posts_path, class: "nav-link white" %>
+          <%= link_to "投稿一覧" , admin_posts_path, class: "nav-link white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "グループ一覧", groups_path, class: "nav-link white" %>
+          <%= link_to "グループ一覧", admin_groups_path, class: "nav-link white" %>
         </li>
         <li class="nav-item">
-          <%= link_to "タグ・ジャンル一覧", "#_path", class: "nav-link white" %>
+          <%= link_to "タグ・ジャンル一覧", "admin_#_path", class: "nav-link white" %>
         </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link white" %>
         </li>
 
-      <% elsif controller_name == "admin" && !admin_signed_in? %>
-        <!-- 管理者がログインしていない時の表示 -->
+      <% elsif !admin_signed_in? %>
+        <!-- 管理者がログインしていない時 -->
         <li class="nav-item">
           <%= link_to "ログイン", new_admin_session_path, class: "nav-link white" %>
         </li>
 
-      <% else %>
-        <!-- ユーザーがログインしていない時 -->
+      <% else !user_signed_in? && request.path.exclude?("/admin")%>
+        <!-- ユーザーがログインしておらず、URLに"/admin"を含まない時 -->
         <li class="nav-item">
           <%= link_to "アバウト", about_path, class: "nav-link white" %>
         </li>
