@@ -19,7 +19,7 @@
       <p class="line-break"><%= user.information %></p>
     </div>
     <div class="col-1 text-center">
-      <%= link_to '詳細', user_path(user.id), class: "btn btn-info" %>
+      <%= link_to '詳細', admin_user_path(user.id), class: "btn btn-info" %>
     </div>
   </div>
 <% end %>

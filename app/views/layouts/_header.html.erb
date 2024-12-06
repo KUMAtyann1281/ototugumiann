@@ -39,8 +39,8 @@
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link white" %>
         </li>
 
-      <% elsif admin_signed_in? %>
-        <!-- 管理者がログインしている時 -->
+      <% elsif admin_signed_in? && request.path.include?("/admin") %>
+        <!-- 管理者がログインしていて、URLに"/admin"を含む時 -->
         <li class="nav-item">
           <%= link_to "お知らせ一覧", admin_notices_path, class: "nav-link white" %>
         </li>
@@ -60,13 +60,13 @@
           <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link white" %>
         </li>
 
-      <% elsif !admin_signed_in? %>
-        <!-- 管理者がログインしていない時 -->
+      <% elsif !admin_signed_in? && request.path.include?("/admin") %>
+        <!-- 管理者がログインしてしておらず、URLに"/admin"を含む時 -->
         <li class="nav-item">
           <%= link_to "ログイン", new_admin_session_path, class: "nav-link white" %>
         </li>
 
-      <% else !user_signed_in? && request.path.exclude?("/admin")%>
+      <% else %>
         <!-- ユーザーがログインしておらず、URLに"/admin"を含まない時 -->
         <li class="nav-item">
           <%= link_to "アバウト", about_path, class: "nav-link white" %>

@@ -1,7 +1,7 @@
 
 <% post.comments.each do |comment| %>
   <div class="col-1">
-    <%= link_to user_path(comment.user) do %>
+    <%= link_to admin_user_path(comment.user) do %>
       <%= image_tag comment.user.get_profile_image, size: "50x50" %><br>
       <%= comment.user.name %>
     <% end %>
@@ -10,8 +10,6 @@
    <p class="line-break"><%= comment.comment %></p>
   </div>
   <div class="col-1">
-    <% if comment.user == current_user %>
-      <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-danger" %>
-    <% end %>
+    <%= link_to "削除", admin_post_comment_path(post, comment), method: :delete, class: "btn btn-danger" %>
   </div>
 <% end %>

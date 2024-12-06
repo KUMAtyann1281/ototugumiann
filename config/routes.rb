@@ -16,7 +16,6 @@ Rails.application.routes.draw do
       get "unsubscribe", on: :member
       patch 'withdraw', on: :member
       resource :favorites, only: [:create, :destroy]
-      resource :relationships, only: [:create, :destroy]
     end
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource :favorite, only: [:create, :destroy]
@@ -38,8 +37,8 @@ Rails.application.routes.draw do
     root to: "homes#top"
     get "search", to: "searchs#search"
     resources :notices, only: [:new, :create, :index, :show, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :edit, :update, :destroy] do
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :posts, only: [:index, :show, :update, :destroy] do
       resources :comments, only: [:destroy]
     end
     resources :groups, only: [:index, :show, :edit, :update, :destroy] do

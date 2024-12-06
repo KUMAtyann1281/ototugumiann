@@ -1,5 +1,5 @@
 class Admin::NoticesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
 
   def new
     @notice = Notice.new
@@ -51,7 +51,7 @@ class Admin::NoticesController < ApplicationController
     params.require(:notice).permit(:title, :body)
   end
 
-  def authenticate_user!
+  def authenticate_admin!
     unless admin_signed_in?
       redirect_to new_admin_session_path
     end

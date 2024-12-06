@@ -1,2 +1,40 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<div class='container'>
+  <div class='form-group row'>
+    <div class="col-12">
+      <h3 class="text-center">ユーザー情報の編集</h3>
+      <%= form_with model: @user, url: admin_user_path(@user), local: true do |f| %>
+        <%= render 'layouts/errors', obj: @user %>
+        <div class="form-group">
+          <h5>ユーザーID: <%= @user.id %> </h5>
+        </div>
+        <div class="form-group">
+          <h5>メールアドレス</h5>
+          <%= f.text_field :email, class: "form-control email" %>
+        </div>
+        <div class="form-group">
+          <h5>プロフィール画像</h5>
+          <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <h5>ハンドルネーム</h5>
+          <%= f.text_field :name, class: "form-control name" %>
+        </div>
+        <div class="form-group">
+          <h5>自己紹介文</h5>
+          <%= f.text_area :information, class: "form-control information" %>
+        </div>
+        <div class="form-group">
+          <%= f.radio_button :is_deleted, :false %>
+          <%= f.label :is_deleted, "有効"  %>
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :is_deleted, "退会" %>
+        </div>
+
+        <div class="form-group text-center">
+          <%= f.submit class: 'btn btn-success w-25' %>
+          <%= link_to "ユーザーの物理削除", admin_user_path(@user.id), method: :delete,  class: "btn btn-danger w-25","data-confirm" => "本当に削除しますか？" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
