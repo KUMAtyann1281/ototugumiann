@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     get "search", to: "searchs#search"
     resources :notices, only: [:new, :create, :index, :show, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update, :destroy]
-    resources :posts, only: [:index, :show, :update, :destroy] do
+    resources :posts, only: [:index, :show, :destroy] do
       resources :comments, only: [:destroy]
     end
     resources :groups, only: [:index, :show, :edit, :update, :destroy] do
